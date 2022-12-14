@@ -283,6 +283,10 @@ PrefabInstance:
       propertyPath: LaserPrefab
       value: 
       objectReference: {fileID: 3476980816757383162, guid: 5a23827709f679e44876d29d9389e36f, type: 3}
+    - target: {fileID: 317418748, guid: 01be9ec2a20279a479d35f92804e8b87, type: 3}
+      propertyPath: CoolDownTimer.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 351552882, guid: 01be9ec2a20279a479d35f92804e8b87, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0

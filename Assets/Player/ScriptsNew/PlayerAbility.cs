@@ -10,6 +10,7 @@ public class PlayerAbility : MonoBehaviour
 
     private Animator _anim;
     private Rigidbody _playerRB;
+    private int _abilityState = 1;
 
     public Image A1image;
     public Image A2image;
@@ -20,7 +21,7 @@ public class PlayerAbility : MonoBehaviour
     public float LaserSpeed = 40f;
     public int[] CoolDownTime = { 3, 3, 3 };
     private bool[] _abilityEnable = { true, true, true };
-    public float[] CoolDownTimer = { 0, 0, 0 };
+    public float[] CoolDownTimer = { 0, 3, 0 };
 
     private void Start()
     {
@@ -31,6 +32,18 @@ public class PlayerAbility : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _abilityState = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _abilityState = 2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _abilityState = 3;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -42,7 +55,7 @@ public class PlayerAbility : MonoBehaviour
             _anim.SetBool("autoAttack", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (_abilityState == 1 & Input.GetMouseButtonDown(1))
         {
             StartCoroutine(Ability1());
         } else
@@ -50,17 +63,20 @@ public class PlayerAbility : MonoBehaviour
             _anim.SetBool("ability1", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (_abilityState == 2 & Input.GetMouseButton(1) & _abilityEnable[1])
         {
             //Ability2();
-            StartCoroutine(Ability2());
+            //StartCoroutine(Ability2());
+            _anim.SetBool("ability2", true);
+            _playerRB.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            CoolDownTimer[1] -= Time.deltaTime * 5;
         }
         else
         {
             _anim.SetBool("ability2", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (_abilityState == 3 & Input.GetMouseButtonDown(1))
         {
             Ability3();
         }
@@ -69,24 +85,41 @@ public class PlayerAbility : MonoBehaviour
             _anim.SetBool("ability3", false);
         }
 
-        for(int i = 2; i >= 0; i--)
+
+        for (int i = 2; i >= 0; i--)
         {
-            if (CoolDownTimer[i] != 0)
+            if (i != 1)
             {
-                CoolDownTimer[i] -= Time.deltaTime;
+                if (CoolDownTimer[i] != 0)
+                {
+                    CoolDownTimer[i] -= Time.deltaTime;
+                }
+                float normalizedfill = Mathf.Clamp(1 - CoolDownTimer[i] / CoolDownTime[i], 0.0f, 1.0f);
+                switch (i)
+                {
+                    case 0:
+                        A1image.fillAmount = normalizedfill;
+                        break;
+                    case 2:
+                        A3image.fillAmount = normalizedfill;
+                        break;
+                }
             }
-            float normalizedfill = Mathf.Clamp(1 - CoolDownTimer[i] / CoolDownTime[i], 0.0f, 1.0f);
-            switch(i)
+            else
             {
-                case 0:
-                    A1image.fillAmount = normalizedfill;
-                    break;
-                case 1:
-                    A2image.fillAmount = normalizedfill;
-                    break;
-                case 2:
-                    A3image.fillAmount = normalizedfill;
-                    break;
+                if (CoolDownTimer[i] < 0)
+                {
+                    StartCoroutine(cooldown(2, 3f));
+                }
+                else
+                {
+                    if (CoolDownTimer[i] <= 3)
+                    {
+                        CoolDownTimer[i] += Time.deltaTime;
+                    }
+                }
+                float normalizedfill = Mathf.Clamp(CoolDownTimer[i] / CoolDownTime[i], 0.0f, 1.0f);
+                A2image.fillAmount = normalizedfill;
             }
         }
 
@@ -116,21 +149,6 @@ public class PlayerAbility : MonoBehaviour
         }
     }
 
-    IEnumerator Ability2()
-    {
-        if (_abilityEnable[1])
-        {
-            StartCoroutine(cooldown(2, CoolDownTime[1]));
-            _anim.SetBool("ability2", true);
-            _playerRB.AddForce(Vector3.up * 10, ForceMode.VelocityChange);
-            yield return new WaitForSeconds(1f);
-            for (int i = 5; i > 0; i--)
-            {
-            _playerRB.AddForce(Vector3.up * 3, ForceMode.VelocityChange);
-                yield return new WaitForSeconds(0.5f);
-            }
-        }
-    }
 
     void Ability3()
     {
@@ -144,7 +162,14 @@ public class PlayerAbility : MonoBehaviour
 
     IEnumerator cooldown(int x, float t)
     {
-        CoolDownTimer[x - 1] = 3;
+        if (x != 2)
+        {
+            CoolDownTimer[x - 1] = 3;
+        }
+        else
+        {
+            CoolDownTimer[x - 1] = 0;
+        }
         _abilityEnable[x - 1] = false;
         yield return new WaitForSeconds(t);
         _abilityEnable[x - 1] = true;

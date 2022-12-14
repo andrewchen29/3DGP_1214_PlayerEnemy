@@ -548,10 +548,6 @@ PrefabInstance:
       propertyPath: A3image
       value: 
       objectReference: {fileID: 1406370018}
-    - target: {fileID: 6524342224562035197, guid: b5381028821cfca41ac4824d632f9aa0, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 6525429478129432188, guid: b5381028821cfca41ac4824d632f9aa0, type: 3}
       propertyPath: m_Name
       value: Elliot_Char Variant
@@ -620,7 +616,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -696,7 +692,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1068,7 +1064,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
