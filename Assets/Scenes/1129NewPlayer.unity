@@ -548,6 +548,10 @@ PrefabInstance:
       propertyPath: A3image
       value: 
       objectReference: {fileID: 1406370018}
+    - target: {fileID: 6524342224562035197, guid: b5381028821cfca41ac4824d632f9aa0, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6525429478129432188, guid: b5381028821cfca41ac4824d632f9aa0, type: 3}
       propertyPath: m_Name
       value: Elliot_Char Variant
