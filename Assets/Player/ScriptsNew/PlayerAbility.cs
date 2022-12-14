@@ -143,9 +143,11 @@ public class PlayerAbility : MonoBehaviour
             laserclone = Instantiate(LaserPrefab, LaserOrigin.position, LaserPrefab.transform.rotation);
             //laserclone.transform.Rotate(0, 0, 90);
             //laserclone.transform.eulerAngles = new Vector3(90, 90, 90);
-            laserclone.GetComponent<Rigidbody>().velocity = this.transform.forward * LaserSpeed + new Vector3(0, 4, 0);
-            laserclone.GetComponent<Rigidbody>().AddTorque(0, 1000, 0);
+            laserclone.GetComponent<Rigidbody>().velocity = this.transform.forward * LaserSpeed + new Vector3(0, 2, 0);
+            laserclone.GetComponent<Rigidbody>().AddTorque(0, 500, 0);
+            yield return new WaitForSeconds(1f);
 
+            Destroy(laserclone);
         }
     }
 

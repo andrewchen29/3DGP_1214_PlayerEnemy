@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("isRunning", true);
         } else
         {
+            _player_rb.transform.LookAt(forward + transform.position);
             _anim.SetBool("isRunning", false);
         }
 
