@@ -560,7 +560,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000010402951368, guid: 5bcbf31ded2e353449622ec74f8954da, type: 3}
       propertyPath: m_Name
-      value: Monster
+      value: Monster4
       objectReference: {fileID: 0}
     - target: {fileID: 4000012531979720, guid: 5bcbf31ded2e353449622ec74f8954da, type: 3}
       propertyPath: m_RootOrder
@@ -714,11 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8937242341795172792, guid: 04329bc0cbc5fa641869016c158717a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: -0.046835
       objectReference: {fileID: 0}
     - target: {fileID: 8937242341795172792, guid: 04329bc0cbc5fa641869016c158717a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9762907
+      value: 3.989
       objectReference: {fileID: 0}
     - target: {fileID: 8937242341795172792, guid: 04329bc0cbc5fa641869016c158717a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1578,6 +1578,10 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 192939948}
+    - target: {fileID: 4280597423242516645, guid: bc55827a76fe8d54a9d332d3278064f1, type: 3}
+      propertyPath: m_YAxis.m_MaxSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4280597423242516646, guid: bc55827a76fe8d54a9d332d3278064f1, type: 3}
       propertyPath: m_RootOrder
       value: 6
