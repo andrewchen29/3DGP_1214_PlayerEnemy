@@ -1578,10 +1578,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 192939948}
-    - target: {fileID: 4280597423242516645, guid: bc55827a76fe8d54a9d332d3278064f1, type: 3}
-      propertyPath: m_YAxis.m_MaxSpeed
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 4280597423242516646, guid: bc55827a76fe8d54a9d332d3278064f1, type: 3}
       propertyPath: m_RootOrder
       value: 6

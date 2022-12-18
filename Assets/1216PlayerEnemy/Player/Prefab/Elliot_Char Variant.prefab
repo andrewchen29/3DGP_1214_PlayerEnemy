@@ -292,6 +292,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2026091498, guid: 01be9ec2a20279a479d35f92804e8b87, type: 3}
+      propertyPath: m_Height
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026091498, guid: 01be9ec2a20279a479d35f92804e8b87, type: 3}
+      propertyPath: m_Center.x
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026091498, guid: 01be9ec2a20279a479d35f92804e8b87, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
